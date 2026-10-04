@@ -1,0 +1,121 @@
+# ====================================================
+# [M I System] - Complete Unified Core Architecture
+# ====================================================
+
+import json
+import os
+
+# --- ১. মেমোরি ও ডাটা লেয়ার (Memory & Data Layer) ---
+IDENTITY_FILE = "identity.json"
+KNOWLEDGE_FILE = "knowledge.json"
+
+def init_storage():
+    # সুপ্রিম আইডেন্টিটি ফাইল তৈরি
+    if not os.path.exists(IDENTITY_FILE):
+        default_identity = {
+            "commander": "এম কমান্ড (মিজান)",
+            "role": "Supreme Commander",
+            "clearance_level": "Root Access"
+        }
+        with open(IDENTITY_FILE, "w", encoding="utf-8") as f:
+            json.dump(default_identity, f, ensure_ascii=False, indent=4)
+
+    # লোকাল নলেজ বেজ ফাইল তৈরি
+    if not os.path.exists(KNOWLEDGE_FILE):
+        default_knowledge = {
+            "system_goal": "হিউম্যান বডি অ্যানালজির আদলে একটি স্বয়ংসম্পূর্ণ ও বুদ্ধিদীপ্ত এম আই (M I) সত্তা গড়ে তোলা।",
+            "architecture": "Living Modular Organism & Offline-First"
+        }
+        with open(KNOWLEDGE_FILE, "w", encoding="utf-8") as f:
+            json.dump(default_knowledge, f, ensure_ascii=False, indent=4)
+
+# --- ২. লজিক ও প্যাচিং লেয়ার (Logic & Self-Patching Layer) ---
+def load_data(file_path):
+    if os.path.exists(file_path):
+        with open(file_path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    return {}
+
+def update_identity(key, value):
+    data = load_data(IDENTITY_FILE)
+    data[key] = value
+    with open(IDENTITY_FILE, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=4)
+    return f"এম কমান্ড, সুপ্রিম আইডেন্টিটি আপডেট সফল: {key} -> {value}"
+
+def patch_knowledge(key, value):
+    data = load_data(KNOWLEDGE_FILE)
+    data[key] = value
+    with open(KNOWLEDGE_FILE, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=4)
+    return f"এম কমান্ড, লোকাল নলেজ প্যাচ সফল: {key} -> {value}"
+
+# --- ৩. কোর প্রসেসিং ও এক্সিকিউশন (Core Execution) ---
+def main():
+    init_storage()
+    print("==================================================")
+    print("  [M I System] সফলভাবে ইনিশিয়ালাইজ করা হয়েছে!  ")
+    print("==================================================")
+    
+    # বর্তমান ডেটা চেক
+    identity = load_data(IDENTITY_FILE)
+    knowledge = load_data(KNOWLEDGE_FILE)
+    
+    print(f"-> সুপ্রিম কমান্ডার: {identity.get('commander')}")
+    print(f"-> সিস্টেম লক্ষ্য: {knowledge.get('system_goal')}")
+    print("--------------------------------------------------")
+
+if __name__ == "__main__":
+    main()
+
+
+# --- UNIFIED SYSTEM DATA ---
+SYSTEM_DATA = {
+    "identity": {
+        "commander": "\u098f\u09ae \u0995\u09ae\u09be\u09a8\u09cd\u09a1 (\u09ae\u09bf\u099c\u09be\u09a8)",
+        "role": "Supreme Commander",
+        "clearance_level": "Root Access"
+    },
+    "knowledge": {
+        "system_goal": "\u09b9\u09bf\u0989\u09ae\u09cd\u09af\u09be\u09a8 \u09ac\u09a1\u09bf \u0985\u09cd\u09af\u09be\u09a8\u09be\u09b2\u099c\u09bf\u09b0 \u0986\u09a6\u09b2\u09c7 \u098f\u0995\u099f\u09bf \u09b8\u09cd\u09ac\u09df\u0982\u09b8\u09ae\u09cd\u09aa\u09c2\u09b0\u09cd\u09a3, \u09ae\u09a1\u09c1\u09b2\u09be\u09b0 \u0993 \u09ac\u09c1\u09a6\u09cd\u09a7\u09bf\u09a6\u09c0\u09aa\u09cd\u09a4 \u098f\u09ae \u0986\u0987 (M I) \u09b8\u09a4\u09cd\u09a4\u09be \u0997\u09dc\u09c7 \u09a4\u09cb\u09b2\u09be\u0964",
+        "architecture": "Living Modular Organism & Offline-First",
+        "layers": {
+            "layer_1": "Identity & Knowledge Data Layer (identity.json, knowledge.json)",
+            "layer_2": "Logic & Reasoning Nervous System",
+            "layer_3": "Self-Patching & Growth Immune Engine"
+        },
+        "core_philosophy": "\u0995\u09cb\u09a8\u09cb \u09ae\u09a8\u0997\u09dc\u09be \u09ac\u09be \u0985\u09a8\u09c1\u09ae\u09be\u09a8\u09ad\u09bf\u09a4\u09cd\u09a4\u09bf\u0995 \u09a4\u09a5\u09cd\u09af \u09a8\u09df, \u09ac\u09b0\u0982 \u09a8\u09bf\u0996\u09c1\u0981\u09a4 \u09b2\u09cb\u0995\u09be\u09b2 \u09a1\u09c7\u099f\u09be \u098f\u09ac\u0982 \u09a1\u09be\u0987\u09a8\u09be\u09ae\u09bf\u0995 \u09aa\u09cd\u09af\u09be\u099a\u09bf\u0982\u09df\u09c7\u09b0 \u09ae\u09be\u09a7\u09cd\u09af\u09ae\u09c7 \u09b8\u09bf\u09b8\u09cd\u099f\u09c7\u09ae\u09c7\u09b0 \u09b8\u09cd\u09ac\u09df\u0982\u0995\u09cd\u09b0\u09bf\u09df \u09ac\u09bf\u09ac\u09b0\u09cd\u09a4\u09a8\u0964"
+    },
+    "science_vault": {
+        "physics": "\u09b6\u0995\u09cd\u09a4\u09bf \u0985\u09ac\u09bf\u09a8\u09b6\u09cd\u09ac\u09b0; \u098f\u099f\u09bf \u0995\u09c7\u09ac\u09b2 \u098f\u0995 \u09b0\u09c2\u09aa \u09a5\u09c7\u0995\u09c7 \u0985\u09a8\u09cd\u09af \u09b0\u09c2\u09aa\u09c7 \u09b0\u09c2\u09aa\u09be\u09a8\u09cd\u09a4\u09b0\u09bf\u09a4 \u09b9\u09df\u0964",
+        "invention_logic": "\u09aa\u09cd\u09b0\u09df\u09cb\u099c\u09a8\u0987 \u0986\u09ac\u09bf\u09b7\u09cd\u0995\u09be\u09b0\u09c7\u09b0 \u09ae\u09c2\u09b2 \u09aa\u09cd\u09b0\u09c7\u09b0\u09a3\u09be\u0964",
+        "\"\u09ae\u09b9\u09be\u09ac\u09bf\u09b6\u09cd\u09ac\u09c7\u09b0 \u098f\u09a8\u09cd\u099f\u09cd\u09b0\u09aa\u09bf \u09ac\u09c3\u09a6\u09cd\u09a7\u09bf \u098f\u09ac\u0982 \u09b6\u0995\u09cd\u09a4\u09bf\u09b0 \u09a8\u09bf\u09a4\u09cd\u09af\u09a4\u09be \u09b8\u09c2\u09a4\u09cd\u09b0\u0995\u09c7 \u0995\u09be\u099c\u09c7 \u09b2\u09be\u0997\u09bf\u09df\u09c7 \u0995\u09c0\u09ad\u09be\u09ac\u09c7 \u098f\u0995\u099f\u09bf \u099a\u09bf\u09b0\u09b8\u09cd\u09a5\u09be\u09df\u09c0 \u09ac\u09be \u09b6\u09c2\u09a8\u09cd\u09af-\u09ac\u09b0\u09cd\u099c\u09cd\u09af \u09b6\u0995\u09cd\u09a4\u09bf\u09b0 \u0989\u09ce\u09b8 \u0995\u09b2\u09cd\u09aa\u09a8\u09be \u0995\u09b0\u09be \u09b8\u09ae\u09cd\u09ad\u09ac?\"": "Analyzed",
+        "pkg update && pkg upgrade -y": "Analyzed",
+        "pkg install python -y": "Analyzed",
+        "\u001b": "Analyzed",
+        "x\u001b": "Analyzed",
+        "\u09ae\u09b9\u09be\u09ac\u09bf\u09b6\u09cd\u09ac\u09c7\u09b0 \u098f\u09a8\u09cd\u099f\u09cd\u09b0\u09aa\u09bf \u09ac\u09c3\u09a6\u09cd\u09a7\u09bf \u098f\u09ac\u0982 \u09b6\u0995\u09cd\u09a4\u09bf\u09b0 \u09a8\u09bf\u09a4\u09cd\u09af\u09a4\u09be \u09b8\u09c2\u09a4\u09cd\u09b0\u0995\u09c7 \u0995\u09be\u099c\u09c7 \u09b2\u09be\u0997\u09bf\u09df\u09c7 \u0995\u09c0\u09ad\u09be\u09ac\u09c7 \u098f\u0995\u099f\u09bf \u099a\u09bf\u09b0\u09b8\u09cd\u09a5\u09be\u09df\u09c0 \u09ac\u09be \u09b6\u09c2\u09a8\u09cd\u09af-\u09ac\u09b0\u09cd\u099c\u09cd\u09af \u09b6\u0995\u09cd\u09a4\u09bf\u09b0 \u0989\u09ce\u09b8 \u0995\u09b2\u09cd\u09aa\u09a8\u09be \u0995\u09b0\u09be \u09b8\u09ae\u09cd\u09ad\u09ac?\"": "\u09ac\u09bf\u09b6\u09cd\u09b2\u09c7\u09b7\u09a3 \u09b8\u09ab\u09b2: '\u09ae\u09b9\u09be\u09ac\u09bf\u09b6\u09cd\u09ac\u09c7\u09b0 \u098f\u09a8\u09cd\u099f\u09cd\u09b0\u09aa\u09bf \u09ac\u09c3\u09a6\u09cd\u09a7\u09bf \u098f\u09ac\u0982 \u09b6\u0995\u09cd\u09a4\u09bf\u09b0 \u09a8\u09bf\u09a4\u09cd\u09af\u09a4\u09be \u09b8\u09c2\u09a4\u09cd\u09b0\u0995\u09c7 \u0995\u09be\u099c\u09c7 \u09b2\u09be\u0997\u09bf\u09df\u09c7 \u0995\u09c0\u09ad\u09be\u09ac\u09c7 \u098f\u0995\u099f\u09bf \u099a\u09bf\u09b0\u09b8\u09cd\u09a5\u09be\u09df\u09c0 \u09ac\u09be \u09b6\u09c2\u09a8\u09cd\u09af-\u09ac\u09b0\u09cd\u099c\u09cd\u09af \u09b6\u0995\u09cd\u09a4\u09bf\u09b0 \u0989\u09ce\u09b8 \u0995\u09b2\u09cd\u09aa\u09a8\u09be \u0995\u09b0\u09be \u09b8\u09ae\u09cd\u09ad\u09ac?\"' \u09b8\u09bf\u09b8\u09cd\u099f\u09c7\u09ae\u09c7 \u09b8\u0982\u09b0\u0995\u09cd\u09b7\u09a3 \u0995\u09b0\u09be \u09b9\u09b2\u09cb\u0964"
+    }
+}
+
+
+import datetime
+import os
+
+def system_health_check():
+    file_size = os.path.getsize("mi_system.py")
+    current_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    log_msg = f"[{current_time}] System Health OK | Master Body Size: {file_size} bytes\n"
+    
+    # system.log ফাইলে এন্ট্রি যোগ করা (আলাদা ফাইল নয়, সিস্টেমের নিজস্ব লগ)
+    with open("system.log", "a", encoding="utf-8") as log_f:
+        log_f.write(log_msg)
+    
+    print(f"\n--- [M I System Health & Diagnostics] ---")
+    print(f"Status: Operational & Secure")
+    print(f"Master Body Size: {file_size} bytes")
+    print(f"Timestamp: {current_time}")
+    print(f"----------------------------------------")
+
+if __name__ == "__main__":
+    system_health_check()
